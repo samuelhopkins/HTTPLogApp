@@ -1,0 +1,34 @@
+extends layout
+
+block content
+	div(class="container" ng-app="logApp" ng-controller="LogController")
+		div.row
+			div.col-md-4.centered
+				h3 Alert Console
+				ul(class="alerts")
+					li(ng-repeat="alert in alerts" ng-class="{ 'alert':alert.alert==true, 'mitigated':alert.alert == false }")
+						div(ng-if="alert.alert == true")
+							p High traffic generated an alert
+							p Hits : {{alert.val}} - triggered at {{ alert.date | date:'mediumTime'}}
+						div(ng-if="alert.alert == false")
+							P Alert Recovered
+							P Hits : {{ alert.val }} - at {{ alert.date | date:'mediumTime' }}
+			div.col-md-8
+				div.row
+					div.col-md-6.threshold
+						label Alert Hits Limit:
+						input(ng-model="threshold" val="{{threshold}}")
+					div.col-md-6.centered(ng-hide="show_total")
+						| Total Hits In Last 2 Minutes
+						h4 {{ two_min_total }}
+					div.col-md-6.centered(ng-show="show_total")
+						| Total Hits
+						h4 {{ total_hits }}
+				div.row
+					div(class="chart")
+						div(id="container" style="min-width: 310px; height: 400px; margin: 0 auto")
+					div.buttons
+						button(ng-click="chart = renderRequestTotals; chart(); show_total = true;" class="btn btn-primary") Total Requests
+						button(ng-click="chart = renderTwoMinTotals; chart(); show_total = false;" class="btn btn-primary") 2 Minute Window
+
+

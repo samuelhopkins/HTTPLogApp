@@ -1,0 +1,51 @@
+body {
+  padding: 50px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.alerts{
+	max-height: 70vh;
+	min-height: 70vh;
+	overflow: scroll;
+	list-style: none;
+	border-radius: 5px;
+	border: 2px solid #94B8EF;
+	padding: 10px;
+	background-color: #E1E1E4;
+}
+
+.alerts >li{
+	border: solid 1px black;
+	padding: 5px 5px;
+	margin-bottom: 5px;
+	text-align: left;
+}
+
+.threshold{
+	text-align: center;
+}
+
+.alert{
+	background-color: red;
+	border-radius: 5px;
+}
+
+.btn{
+	margin-left: 5px;
+}
+
+.buttons{
+	text-align: center;
+}
+
+.mitigated{
+	background-color: grey;
+	border-radius: 5px;
+}
+
+.centered{
+	text-align: center;
+}
